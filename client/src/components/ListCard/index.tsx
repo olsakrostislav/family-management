@@ -34,7 +34,7 @@ const Modal = React.memo(({ isOpen, onClose, attachment }: ModalProps) => {
           <X size={30} />
         </button>
         <Image
-          src={`/${attachment.fileURL}`}
+          src={`https://fm-s3-images.s3.eu-central-1.amazonaws.com/${attachment.fileURL}`}
           alt={attachment.fileName}
           width={800}
           height={600}
@@ -82,7 +82,7 @@ const ListCard = ({ task }: Props) => {
                 className="rounded-md border border-gray-200 shadow-md dark:border-gray-600"
               >
                 <Image
-                  src={`/${attachment.fileURL}`}
+                  src={`https://fm-s3-images.s3.eu-central-1.amazonaws.com/${attachment.fileURL}`}
                   alt={attachment.fileName}
                   width={150}
                   height={100}

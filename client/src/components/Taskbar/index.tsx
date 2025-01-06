@@ -52,7 +52,7 @@ export const Taskbar = () => {
         {/* FAMILY */}
         <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4 dark:border-gray-700">
           <Image
-            src="/familylogo.png"
+            src="https://fm-s3-images.s3.eu-central-1.amazonaws.com/familylogo.png"
             alt="Logo"
             height={40}
             width={40}
