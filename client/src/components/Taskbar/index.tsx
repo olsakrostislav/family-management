@@ -51,7 +51,13 @@ export const Taskbar = () => {
         </div>
         {/* FAMILY */}
         <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4 dark:border-gray-700">
-          <Image src="/logo.png" alt="Logo" height={40} width={40} />
+          <Image
+            src="/familylogo.png"
+            alt="Logo"
+            height={40}
+            width={40}
+            className="rounded-lg"
+          />
           <div>
             <h3 className="text-[14px] font-bold tracking-widest dark:text-gray-200">
               FAMILY
