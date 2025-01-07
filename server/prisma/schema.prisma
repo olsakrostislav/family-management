@@ -29,13 +29,12 @@ model User {
 }
 
 model Group {
-  id                   Int    @id @default(autoincrement())
+  id                   Int            @id @default(autoincrement())
   groupName            String
   productOwnerUserId   Int?
   projectManagerUserId Int?
-
-  projectGroup ProjectGroup[]
-  user         User[]
+  projectGroup         ProjectGroup[]
+  user                 User[]
 }
 
 model Project {

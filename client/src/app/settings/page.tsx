@@ -5,7 +5,7 @@ const Settings = () => {
   const userSettings = {
     username: 'johndoe',
     email: 'john.doe@example.com',
-    teamName: 'Development Team',
+    groupName: 'Development Group',
     roleName: 'Developer',
   };
 
@@ -26,8 +26,8 @@ const Settings = () => {
           <div className={textStyles}>{userSettings.email}</div>
         </div>
         <div>
-          <label className={labelStyles}>Team</label>
-          <div className={textStyles}>{userSettings.teamName}</div>
+          <label className={labelStyles}>Group</label>
+          <div className={textStyles}>{userSettings.groupName}</div>
         </div>
         <div>
           <label className={labelStyles}>Role</label>
