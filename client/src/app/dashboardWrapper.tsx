@@ -6,6 +6,7 @@ import { Taskbar } from '@/components/Taskbar';
 import StoreProvider from '@/app/redux';
 import { useTaskbar } from '@/app/hooks/useTaskbar';
 import { useDarkMode } from '@/app/hooks/useDarkMode';
+import AuthProvider from '@/app/authProvider';
 
 const DashboardStructure = ({ children }: { children: React.ReactNode }) => {
   const { isTaskbarCollabsed } = useTaskbar();
@@ -31,7 +32,9 @@ const DashboardStructure = ({ children }: { children: React.ReactNode }) => {
 const DashboardWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <StoreProvider>
-      <DashboardStructure>{children}</DashboardStructure>
+      <AuthProvider>
+        <DashboardStructure>{children}</DashboardStructure>
+      </AuthProvider>
     </StoreProvider>
   );
 };
