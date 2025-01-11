@@ -109,7 +109,7 @@ const Task = ({ task }: TaskProps) => {
           <h4 className="text-md font-bold dark:text-gray-300">{task.title}</h4>
           {typeof task.points === 'number' && (
             <div className="text-xs font-semibold dark:text-gray-300">
-              {task.points} pts
+              {task.points} points
             </div>
           )}
         </div>
