@@ -68,7 +68,19 @@ export const createTask = async (
     authorUserId,
     assignedUserId,
   } = req.body;
+
   try {
+    if (assignedUserId) {
+      const assignedUser = await prisma.user.findUnique({
+        where: { userId: assignedUserId },
+      });
+
+      if (!assignedUser) {
+        res.status(400).json({ message: "Assigned user not found" });
+        return;
+      }
+    }
+
     const newTask = await prisma.task.create({
       data: {
         title,
@@ -81,9 +93,10 @@ export const createTask = async (
         points,
         projectId,
         authorUserId,
-        assignedUserId,
+        assignedUserId: assignedUserId || null,
       },
     });
+
     res.status(201).json(newTask);
   } catch (error: any) {
     res.status(500).json({ message: `Error creating a task ${error.message}` });
