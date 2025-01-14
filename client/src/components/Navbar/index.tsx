@@ -1,11 +1,20 @@
-import React from 'react';
-import { Menu, Moon, Search, Settings, Sun, User } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  Menu,
+  Moon,
+  PlusSquare,
+  Search,
+  Settings,
+  Sun,
+  User,
+} from 'lucide-react';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/app/redux';
 import { setIsDarkMode, setIsTaskbarCollabsed } from '@/state';
 import { useGetAuthUserQuery } from '@/state/api';
 import { signOut } from 'aws-amplify/auth';
 import Image from 'next/image';
+import CreatePlanModal from '@/app/projects/CreatePlanModal';
 
 export const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +34,7 @@ export const Navbar = () => {
 
   if (!currentUser) return null;
   const currentUserDetails = currentUser?.userDetails;
+  const [isCreatePlanModalOpen, setIsCreatePlanModalOpen] = useState(false);
 
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black">
@@ -47,6 +57,18 @@ export const Navbar = () => {
       </div>
 
       <div className="flex items-center">
+        <CreatePlanModal
+          isOpen={isCreatePlanModalOpen}
+          onClose={() => setIsCreatePlanModalOpen(false)}
+        />
+        <div className="px-4">
+          <button
+            className="flex items-center rounded-md bg-blue-primary px-3 py-2 text-white hover:bg-blue-600"
+            onClick={() => setIsCreatePlanModalOpen(true)}
+          >
+            <PlusSquare className="mr-2 size-5" /> New Plan
+          </button>
+        </div>
         <button
           onClick={() => dispatch(setIsDarkMode(!isDarkMode))}
           className={
