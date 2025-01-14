@@ -17,6 +17,7 @@ import Image from 'next/image';
 import CreatePlanModal from '@/app/projects/CreatePlanModal';
 
 export const Navbar = () => {
+  const [isCreatePlanModalOpen, setIsCreatePlanModalOpen] = useState(false);
   const dispatch = useAppDispatch();
   const isTaskbarCollabsed = useAppSelector(
     (state) => state.global.isTaskbarCollabsed
@@ -34,7 +35,6 @@ export const Navbar = () => {
 
   if (!currentUser) return null;
   const currentUserDetails = currentUser?.userDetails;
-  const [isCreatePlanModalOpen, setIsCreatePlanModalOpen] = useState(false);
 
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black">
