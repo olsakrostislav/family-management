@@ -10,6 +10,9 @@ export default {
   theme: {
     extend: {
       colors: {
+        pink: '#e8175d',
+        modernblack: '#363636',
+        modernwhite: '#f6f6f4',
         white: '#ffffff',
         gray: {
           100: '#f3f4f6',

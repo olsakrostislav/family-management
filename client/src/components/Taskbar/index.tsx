@@ -21,15 +21,29 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { useTaskbar } from '@/app/hooks/useTaskbar';
 import { useGetAuthUserQuery, useGetProjectsQuery } from '@/state/api';
-import { signOut } from 'aws-amplify/auth';
+import { signOut, getCurrentUser } from 'aws-amplify/auth';
 
 export const Taskbar = () => {
   const [showTasks, setShowTasks] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
+  const [username, setUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const { username } = await getCurrentUser();
+        setUsername(username);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
 
   const { data: projects } = useGetProjectsQuery();
   const { isTaskbarCollabsed, toggleTaskbar } = useTaskbar();
@@ -51,12 +65,14 @@ export const Taskbar = () => {
     <div className={taskbarNames}>
       <div className="flex h-[100%] w-full flex-col justify-start">
         <div className="z-80 flex min-h-[56px] w-64 items-center justify-between bg-white px-6 pt-3 dark:bg-black">
-          <div className="text-xl font-bold text-gray-800 dark:text-gray-200">
-            FAMTASK
+          <div className="text-xl font-bold">
+            <span className="text-modernblack dark:text-modernwhite">task</span>
+            <span className="text-pink">thing</span>
+            <span className="text-modernblack dark:text-modernwhite">.</span>
           </div>
           {!isTaskbarCollabsed && (
             <button className="py-3" onClick={toggleTaskbar}>
-              <X className="hover-text-gray-500 size-6 text-gray-800 dark:text-gray-200" />
+              <X className="hover-text-gray-500 size-6 text-modernblack dark:text-modernwhite" />
             </button>
           )}
         </div>
@@ -70,7 +86,7 @@ export const Taskbar = () => {
           />
           <div>
             <h3 className="text-[14px] font-bold tracking-widest dark:text-gray-200">
-              FAMILY
+              {username ? username.toUpperCase() : 'Loading...'}
             </h3>
             <div className="mt-1 flex items-start gap-2">
               <LockIcon className="mt-[1.6px] h-3 w-3 text-gray-500 dark:text-gray-400" />
