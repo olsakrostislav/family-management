@@ -13,6 +13,8 @@ export default {
         pink: '#e8175d',
         modernblack: '#363636',
         modernwhite: '#f6f6f4',
+        moderngray: '#bbbbbb',
+        green: '#059669',
         white: '#ffffff',
         gray: {
           100: '#f3f4f6',

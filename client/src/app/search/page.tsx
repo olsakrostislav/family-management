@@ -6,7 +6,6 @@ import ListCard from '@/components/ListCard';
 import { useSearchQuery } from '@/state/api';
 import { debounce } from 'lodash';
 import React, { useEffect, useState } from 'react';
-import UserCard from '@/components/UserCard';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -57,13 +56,6 @@ const Search = () => {
             )}
             {searchResults.projects?.map((project) => (
               <PlansCard key={project.id} plan={project} />
-            ))}
-
-            {searchResults.users && searchResults.users?.length > 0 && (
-              <h2>Users</h2>
-            )}
-            {searchResults.users?.map((user) => (
-              <UserCard key={user.userId} user={user} />
             ))}
           </div>
         )}
