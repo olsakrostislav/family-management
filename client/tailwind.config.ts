@@ -15,6 +15,7 @@ export default {
         modernwhite: '#f6f6f4',
         moderngray: '#bbbbbb',
         green: '#059669',
+        green_dark: '#027350',
         white: '#ffffff',
         gray: {
           100: '#f3f4f6',

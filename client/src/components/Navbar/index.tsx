@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Menu,
-  Moon,
-  PlusSquare,
-  Search,
-  Settings,
-  Sun,
-  User,
-} from 'lucide-react';
+import { Menu, Moon, PlusSquare, Search, Sun, User } from 'lucide-react';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/app/redux';
 import { setIsDarkMode, setIsTaskbarCollabsed } from '@/state';
@@ -63,7 +55,7 @@ export const Navbar = () => {
         />
         <div className="px-4">
           <button
-            className="flex items-center rounded-md bg-blue-primary px-3 py-2 text-white hover:bg-blue-600"
+            className="hover:bg-green_dark flex items-center rounded-md bg-green px-3 py-2 text-white"
             onClick={() => setIsCreatePlanModalOpen(true)}
           >
             <PlusSquare className="mr-2 size-5" /> New Plan
@@ -78,22 +70,12 @@ export const Navbar = () => {
           }
         >
           {isDarkMode ? (
-            <Sun className="h-6 w-6 cursor-pointer dark:text-white" />
+            <Sun className="h-6 w-6 cursor-pointer dark:text-modernwhite" />
           ) : (
-            <Moon className="h-6 w-6 cursor-pointer dark:text-white" />
+            <Moon className="h-6 w-6 cursor-pointer dark:text-modernwhite" />
           )}
         </button>
-        <Link
-          href="/settings"
-          className={
-            isDarkMode
-              ? `h-min w-min rounded p-2 dark:hover:bg-gray-700`
-              : `h-min w-min rounded p-2 hover:bg-gray-100`
-          }
-        >
-          <Settings className="h-6 w-6 cursor-pointer dark:text-white" />
-        </Link>
-        <div className="ml-2 mr-5 hidden min-h-[2em] w-[0.1rem] bg-gray-200 md:inline-block"></div>
+        <div className="ml-3 mr-3 hidden min-h-[2em] w-[0.1rem] bg-gray-200 md:inline-block"></div>
         <div className="hidden items-center justify-between md:flex">
           <div className="align-center flex h-9 w-9 justify-center">
             {!!currentUserDetails?.profilePictureUrl ? (
@@ -105,14 +87,23 @@ export const Navbar = () => {
                 className="h-full rounded-full object-cover"
               />
             ) : (
-              <User className="h-6 w-6 cursor-pointer self-center rounded-full dark:text-white" />
+              <Link
+                href="/users"
+                className={
+                  isDarkMode
+                    ? `h-min w-min rounded p-2 dark:hover:bg-gray-700`
+                    : `h-min w-min rounded p-2 hover:bg-gray-100`
+                }
+              >
+                <User className="h-6 w-6 cursor-pointer self-center rounded-full dark:text-white" />
+              </Link>
             )}
           </div>
           <span className="mx-3 text-gray-800 dark:text-white">
             {currentUserDetails?.username}
           </span>
           <button
-            className="hidden rounded bg-blue-400 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500 md:block"
+            className="hover:bg-green_dark hidden rounded bg-green px-4 py-2 text-xs font-bold text-white md:block"
             onClick={handleSignOut}
           >
             Sign out

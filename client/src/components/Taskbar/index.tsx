@@ -10,7 +10,6 @@ import {
   Layers3,
   LucideIcon,
   Search,
-  Settings,
   ShieldAlert,
   User,
   Users,
@@ -142,7 +141,7 @@ export const Taskbar = () => {
               whileHover={{ scale: 1.1, color: '#e91e63' }}
               transition={{ type: 'spring', stiffness: 300, damping: 12 }}
             >
-              <span className="text-modernblack dark:text-modernwhite">
+              <span className="text-[19px] text-modernblack dark:text-modernwhite">
                 {text}
               </span>
               <motion.div
@@ -176,11 +175,8 @@ export const Taskbar = () => {
         </div>
         <nav className="z-10 w-full">
           <TaskbarLink icon={Home} label="Home" href="/" />
-          <TaskbarLink icon={Briefcase} label="Timeline" href="/timeline" />
           <TaskbarLink icon={Search} label="Search" href="/search" />
-          <TaskbarLink icon={Settings} label="Settings" href="/settings" />
-          <TaskbarLink icon={User} label="Users" href="/users" />
-          <TaskbarLink icon={Users} label="Groups" href="/groups" />
+          <TaskbarLink icon={User} label="User Info" href="/users" />
         </nav>
 
         <button

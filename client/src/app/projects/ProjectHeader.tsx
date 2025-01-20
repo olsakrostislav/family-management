@@ -38,7 +38,6 @@ const ProjectHeader = ({ currentTab, setCurrentTab }: Props) => {
           }
         />
       </div>
-      {/* TABS */}
 
       <div className="flex flex-wrap-reverse gap-2 border-y border-gray-200 pb-[8px] pt-2 dark:border-stroke-dark md:items-center">
         <div className="flex flex-1 items-center gap-2 md:gap-4">
